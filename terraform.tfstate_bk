@@ -1,0 +1,145 @@
+{
+  "version": 4,
+  "terraform_version": "1.0.0",
+  "serial": 89,
+  "lineage": "84cd8cf6-9b58-e5b2-80ca-c1526339718d",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "aws_acm_certificate",
+      "name": "kk-domain",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:acm:us-west-2:252078852689:certificate/efd10e29-23e8-40f9-ae34-9ffe8c38cba2",
+            "certificate_authority_arn": "",
+            "certificate_body": null,
+            "certificate_chain": null,
+            "domain_name": "visakhkk.cf",
+            "domain_validation_options": [
+              {
+                "domain_name": "visakhkk.cf",
+                "resource_record_name": "_f7de14e1d1bae00b587930c1adbb28df.visakhkk.cf.",
+                "resource_record_type": "CNAME",
+                "resource_record_value": "_18cf30258b8e1e3aed50f3e48c1bdcee.dsrmygwdhx.acm-validations.aws."
+              }
+            ],
+            "id": "arn:aws:acm:us-west-2:252078852689:certificate/efd10e29-23e8-40f9-ae34-9ffe8c38cba2",
+            "options": [
+              {
+                "certificate_transparency_logging_preference": "ENABLED"
+              }
+            ],
+            "private_key": null,
+            "status": "PENDING_VALIDATION",
+            "subject_alternative_names": [],
+            "tags": null,
+            "tags_all": {},
+            "validation_emails": [],
+            "validation_method": "DNS"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_acm_certificate_validation",
+      "name": "kk-validation",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "certificate_arn": "arn:aws:acm:us-west-2:252078852689:certificate/efd10e29-23e8-40f9-ae34-9ffe8c38cba2",
+            "id": "2022-01-20 16:17:51.411 +0000 UTC",
+            "timeouts": null,
+            "validation_record_fqdns": [
+              "_f7de14e1d1bae00b587930c1adbb28df.visakhkk.cf"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoyNzAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "aws_acm_certificate.kk-domain",
+            "aws_route53_record.kk-record",
+            "aws_route53_zone.kk-r53"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_route53_record",
+      "name": "kk-record",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": "visakhkk.cf",
+          "schema_version": 2,
+          "attributes": {
+            "alias": [],
+            "allow_overwrite": true,
+            "failover_routing_policy": [],
+            "fqdn": "_f7de14e1d1bae00b587930c1adbb28df.visakhkk.cf",
+            "geolocation_routing_policy": [],
+            "health_check_id": null,
+            "id": "Z0355206Q77KT88B74KN__f7de14e1d1bae00b587930c1adbb28df.visakhkk.cf._CNAME",
+            "latency_routing_policy": [],
+            "multivalue_answer_routing_policy": null,
+            "name": "_f7de14e1d1bae00b587930c1adbb28df.visakhkk.cf",
+            "records": [
+              "_18cf30258b8e1e3aed50f3e48c1bdcee.dsrmygwdhx.acm-validations.aws."
+            ],
+            "set_identifier": null,
+            "ttl": 60,
+            "type": "CNAME",
+            "weighted_routing_policy": [],
+            "zone_id": "Z0355206Q77KT88B74KN"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjIifQ==",
+          "dependencies": [
+            "aws_acm_certificate.kk-domain",
+            "aws_route53_zone.kk-r53"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_route53_zone",
+      "name": "kk-r53",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:route53:::hostedzone/Z0355206Q77KT88B74KN",
+            "comment": "Managed by Terraform",
+            "delegation_set_id": "",
+            "force_destroy": false,
+            "id": "Z0355206Q77KT88B74KN",
+            "name": "visakhkk.cf",
+            "name_servers": [
+              "ns-1527.awsdns-62.org",
+              "ns-1890.awsdns-44.co.uk",
+              "ns-195.awsdns-24.com",
+              "ns-721.awsdns-26.net"
+            ],
+            "tags": null,
+            "tags_all": {},
+            "vpc": [],
+            "zone_id": "Z0355206Q77KT88B74KN"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    }
+  ]
+}
